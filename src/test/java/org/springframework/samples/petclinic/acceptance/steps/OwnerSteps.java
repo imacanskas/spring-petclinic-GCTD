@@ -137,8 +137,12 @@ public class OwnerSteps {
 	}
 
 	@When("el veterinario ingresa {string} en el campo Last Name")
-	public void findOwner(String lastname) {
+	public void setLastName_find(String lastname) {
 		site.ownerList.setLastNameToFind(lastname);
+	}
+	
+	@When("el veterinario hace clic en el botón Find Owner")
+	public void findOwner() {
 		site.ownerList.findOwner();
 	}
 
