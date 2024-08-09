@@ -37,10 +37,27 @@ Feature: Registro de Dueños de Mascotas
       
   Scenario: Buscar un dueño de mascota por apellido
     Given el veterinario está en la página de búsqueda de dueños de mascotas
-    When el veterinario ingresa "Rodriquez" en el campo Last Name
+    When el veterinario ingresa "Franklin" en el campo Last Name
     And el veterinario hace clic en el botón Find Owner
     Then el sistema debería dirigir a la pantalla de detalles del dueño de mascota
-    And muestra el texto "Eduardo Rodriquez" en el campo Name
-    And muestra el texto "2693 Commerce St." en el campo Address
-    And muestra el texto "McFarland" en el campo City
-	And muestra el texto "6085558763" en el campo Telephone
+    And muestra el texto "George Franklin" en el campo Name
+    And muestra el texto "110 W. Liberty St." en el campo Address
+    And muestra el texto "Maddison" en el campo City
+	And muestra el texto "6085551023" en el campo Telephone
+	
+  Scenario: Editar la ciudad y teléfono de un dueño de mascota
+    Given el veterinario está viendo la información de un dueño de mascotas
+    When el veterniario hace clic en el botón Edit Owner
+    And muestra el texto "George Franklin" en el campo Name
+    And muestra el texto "110 W. Liberty St." en el campo Address
+    And muestra el texto "Maddison" en el campo City
+	And muestra el texto "6085551023" en el campo Telephone
+    And el veterinario ingresa "Springfield" en el campo City
+    And el veterinario ingresa "1234567890" en el campo Telephone
+    And el veterniario hace clic en el botón Update Owner
+    Then el sistema debería mostrar el mensaje "Owner Updates" y los datos del dueño actualizados
+    And muestra el texto "George Franklin" en el campo Name
+    And muestra el texto "110 W. Liberty St." en el campo Address
+    And muestra el texto "Springfield" en el campo City
+	And muestra el texto "1234567890" en el campo Telephone
+
