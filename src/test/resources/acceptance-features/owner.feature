@@ -33,31 +33,30 @@ Feature: Registro de Dueños de Mascotas
       | John       | Doe       | 123 Main St | Springfield |             | Telephone   | no debe estar vacío                 |
       | John       | Doe       | 123 Main St | Springfield | 12345       | Telephone   | Telephone must be a 10-digit number |
       | John       | Doe       | 123 Main St | Springfield | abcdefghij  | Telephone   | Telephone must be a 10-digit number |
-
       
   Scenario: Buscar un dueño de mascota por apellido
     Given el veterinario está en la página de búsqueda de dueños de mascotas
-    When el veterinario ingresa "Franklin" en el campo Last Name
+    When el veterinario ingresa "<Last Name>" en el campo Last Name
     And el veterinario hace clic en el botón Find Owner
     Then el sistema debería dirigir a la pantalla de detalles del dueño de mascota
-    And muestra el texto "George Franklin" en el campo Name
-    And muestra el texto "110 W. Liberty St." en el campo Address
-    And muestra el texto "Maddison" en el campo City
-	And muestra el texto "6085551023" en el campo Telephone
+    And muestra el texto "<First Name>" "<Last Name>" en el campo Name
+    And muestra el texto "<Address>" en el campo Address
+    And muestra el texto "<City>" en el campo City
+	And muestra el texto "<Telephone>" en el campo Telephone
 	
-  Scenario: Editar la ciudad y teléfono de un dueño de mascota
-    Given el veterinario está viendo la información de un dueño de mascotas
-    When el veterniario hace clic en el botón Edit Owner
-    And muestra el texto "George Franklin" en el campo Name
-    And muestra el texto "110 W. Liberty St." en el campo Address
-    And muestra el texto "Maddison" en el campo City
-	And muestra el texto "6085551023" en el campo Telephone
-    And el veterinario ingresa "Springfield" en el campo City
-    And el veterinario ingresa "1234567890" en el campo Telephone
-    And el veterniario hace clic en el botón Update Owner
-    Then el sistema debería mostrar el mensaje "Owner Updates" y los datos del dueño actualizados
-    And muestra el texto "George Franklin" en el campo Name
-    And muestra el texto "110 W. Liberty St." en el campo Address
-    And muestra el texto "Springfield" en el campo City
-	And muestra el texto "1234567890" en el campo Telephone
+    Examples:
+      | First Name | Last Name | Address            | City        | Telephone   
+      | George     | Franklin  | 110 W. Liberty St. | Maddison     | 6085551023  
 
+  Scenario: Editar la ciudad y teléfono de un dueño de mascota
+    Given el veterinario hizo click en Edit Owner
+    When el veterniario modifica el campo "<City>"
+    And el veterinario modifica el campo "<Telephone>"
+    And el veterinario hace click en Update Owner
+    Then el sistema debería mostrar el mensaje "<mensaje>" y los datos del dueño actualizados
+
+    Examples:
+      | City        | Telephone   
+      | Springfield | 1234567890  
+    
+	
