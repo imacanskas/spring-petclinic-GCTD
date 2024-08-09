@@ -150,11 +150,20 @@ public class OwnerSteps {
 	public void goToEditOwner() {
 		site.navBar.checkTitle(OWNER_FORM_TITLE);
 	}
+	
+	@When("el veterniario modifica el campo ciudad {string}")
+	public void updateCity(String city) {
+		site.ownerForm.setCity(city);
+	}
+
+	@When("el veterniario modifica el campo teléfono {string}")
+	public void updateTelephone(String telephone) {
+		site.ownerForm.setTelephone(telephone);
+	}
 
 	@When("el veterinario hace click en Update Owner")
-	public void editOwner(String city, String telephone) {
-		site.ownerForm.setCity(city);
-		site.ownerForm.setTelephone(telephone);
+	public void updateOwner(String city, String telephone) {
+		site.ownerForm.addOwner();
 	}
 
 	@Then("el sistema debería mostrar el mensaje {string} y los datos del dueño actualizados")
