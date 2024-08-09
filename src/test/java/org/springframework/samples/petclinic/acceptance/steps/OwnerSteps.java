@@ -153,7 +153,7 @@ public class OwnerSteps {
 	
 	/**
 	 * Editar Datos de Dueño
-	 
+	 */
 	
 	@Given("el veterinario hizo click en Edit Owner")
 	public void goToEditOwner() {
@@ -181,5 +181,4 @@ public class OwnerSteps {
 		site.navBar.checkTitle(OWNER_DETAILS_TITLE);
 	}
 
-*/
 }
