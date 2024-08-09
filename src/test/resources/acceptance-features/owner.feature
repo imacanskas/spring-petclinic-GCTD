@@ -50,8 +50,8 @@ Feature: Registro de Dueños de Mascotas
 
   Scenario: Editar la ciudad y teléfono de un dueño de mascota
     Given el veterinario hizo click en Edit Owner
-    When el veterniario modifica el campo "<City>"
-    And el veterinario modifica el campo "<Telephone>"
+    When el veterniario modifica el campo ciudad "<City>"
+    And el veterinario modifica el campo teléfono "<Telephone>"
     And el veterinario hace click en Update Owner
     Then el sistema debería mostrar el mensaje "<mensaje>" y los datos del dueño actualizados
 
