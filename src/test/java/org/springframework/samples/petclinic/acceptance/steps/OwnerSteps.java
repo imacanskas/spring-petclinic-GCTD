@@ -126,14 +126,19 @@ public class OwnerSteps {
 	public void checkTelephone(String telephone) {
 		site.ownerDetails.checkTelephone(telephone);
 	}
-
+	
+	/**
+	 * Buscar Datos de Dueño
+	 */
+	
 	@Given("el veterinario está en la página de búsqueda de dueños de mascotas")
 	public void goToFindOwner() {
 		site.navBar.findOwners();
 	}
 
-	@When("el veterinario hace clic en el botón Find Owner")
-	public void findOwner() {
+	@When("el veterinario ingresa {string} en el campo Last Name")
+	public void findOwner(String lastname) {
+		site.ownerList.setLastNameToFind(lastname);
 		site.ownerList.findOwner();
 	}
 
