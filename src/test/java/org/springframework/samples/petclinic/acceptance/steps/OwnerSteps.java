@@ -138,8 +138,30 @@ public class OwnerSteps {
 	}
 
 	@Then("el sistema debería dirigir a la pantalla de detalles del dueño de mascota")
-	public void owmerInfoCheckTitle() {
+	public void ownerInfoCheckTitle() {
 		site.navBar.checkTitle(OWNER_DETAILS_TITLE);
 	}
+	
+	/**
+	 * Editar Datos de Dueño
+	 */
+	
+	@Given("el veterinario hizo click en Edit Owner")
+	public void goToEditOwner() {
+		site.navBar.checkTitle(OWNER_FORM_TITLE);
+	}
+
+	@When("el veterinario hace click en Update Owner")
+	public void editOwner(String city, String telephone) {
+		site.ownerForm.setCity(city);
+		site.ownerForm.setTelephone(telephone);
+	}
+
+	@Then("el sistema debería mostrar el mensaje {string} y los datos del dueño actualizados")
+	public void updateOwner(String mensaje) {
+		site.ownerDetails.checkSuccessMessage(mensaje);
+		site.navBar.checkTitle(OWNER_DETAILS_TITLE);
+	}
+
 
 }
